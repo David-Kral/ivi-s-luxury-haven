@@ -10,6 +10,8 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    // Served from a subpath on GitHub Pages.
+    basepath: "/ivi-s-luxury-haven",
   });
 
   return router;
