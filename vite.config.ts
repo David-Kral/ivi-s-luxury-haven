@@ -7,22 +7,9 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  // Hosted from a subpath on GitHub Pages:
-  // https://david-kral.github.io/ivi-s-luxury-haven/
-  vite: {
-    base: "/ivi-s-luxury-haven/",
-  },
-  // Force-enable the nitro deploy build in CI (outside Lovable's environment),
-  // so the build emits a static .output/public. Preset is set via NITRO_PRESET=static.
-  nitro: true,
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    // Statically prerender the site to HTML so it can be hosted on GitHub Pages.
-    // (SPA shell mode currently conflicts with the nitro build, so we prerender instead.)
-    prerender: {
-      enabled: true,
-    },
   },
 });
