@@ -12,6 +12,9 @@ export default defineConfig({
   vite: {
     base: "/ivi-s-luxury-haven/",
   },
+  // Force-enable the nitro deploy build in CI (outside Lovable's environment),
+  // so the build emits a static .output/public. Preset is set via NITRO_PRESET=static.
+  nitro: true,
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
