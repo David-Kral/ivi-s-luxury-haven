@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRouter } from "@tanstack/react-router";
+import { createRouter, rewriteBasepath } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
 export const getRouter = () => {
@@ -10,8 +10,11 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
-    // Served from a subpath on GitHub Pages.
-    basepath: "/ivi-s-luxury-haven",
+    // Served from a subpath on GitHub Pages. rewriteBasepath makes both the
+    // prerender crawler and the client router respect the base path.
+    rewrite: rewriteBasepath({
+      basepath: "/ivi-s-luxury-haven",
+    }),
   });
 
   return router;
