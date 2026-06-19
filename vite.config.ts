@@ -7,9 +7,18 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Hosted from a subpath on GitHub Pages:
+  // https://david-kral.github.io/ivi-s-luxury-haven/
+  vite: {
+    base: "/ivi-s-luxury-haven/",
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Ship a static, client-only build (SPA shell) so it can be hosted on GitHub Pages.
+    spa: {
+      enabled: true,
+    },
   },
 });
